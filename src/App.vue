@@ -1,18 +1,23 @@
 <template>
-    <div>
-        <h1>App.Vue</h1>
-        <span>#Debug: {{count1}}</span>
-    </div>
+  <div>
+    <h1>App.Vue</h1>
+    <span>#Count1: {{ count1 }}</span> <br>
+    <span>#Count2: {{ count2 }}</span> <br>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-    setup() {
-        return {
-            count1: 10
-        }    
-    },
-})
+  setup() {
+    let count1 = 1;
+    const count2 = ref<number>(2)
+
+    return {
+      count1,
+      count2
+    };
+  },
+});
 </script>
