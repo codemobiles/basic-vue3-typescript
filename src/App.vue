@@ -10,8 +10,7 @@
     <button @click="onClickClearAccount">Clear</button>
     <hr>
     <!-- reorder ep10 -->
-    <LoginForm title="Login 1"/>
-    <login-form title="Login 2"/>
+    <LoginForm title="Login"/>    
   </div>
 </template>
 
