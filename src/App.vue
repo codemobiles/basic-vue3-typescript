@@ -9,6 +9,7 @@
     <span>#Account: {{ states.account }}</span> <br />
     <button @click="onClickClearAccount">Clear</button>
     <hr>
+    <!-- reorder ep10 -->
     <LoginForm/>
     <login-form/>
   </div>
