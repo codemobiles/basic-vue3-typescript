@@ -12,16 +12,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive } from "vue";
+import { defineComponent, ref, reactive, onMounted } from "vue";
 
 const defaultAccount = {username: "", password:""}
 
-export default defineComponent({
+export default defineComponent({    
   setup() {
     let count1 = 1;
     const count2 = ref<number>(2);
     const states = reactive({
       account: { username: "admin", password: "1234" },      
+    });
+
+    onMounted(() => {
+        setInterval(onClickAdd2, 1000)
     });
 
     const onClickAdd1 = () => {
