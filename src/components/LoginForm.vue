@@ -4,15 +4,15 @@
     <form>
       <!-- username -->
       <label for="username">Username: </label>
-      <input type="text" name="username" id="username" />
+      <input type="text" name="username" id="username" v-model="states.account.username" />
       <br />
       <!-- password -->
       <label for="password">Password: </label>
-      <input type="text" name="password" id="password" />
+      <input type="text" name="password" id="password" v-model="states.account.password"/>
       <br />
       <!-- buttons -->
-      <button>Submit</button>
-      <button>Clear</button>
+      <button type="button">Submit</button>
+      <button type="button" @click="onClickClear">Clear</button>
       <br>
       <span>#Debug: {{states.account}}</span>
     </form>
@@ -27,7 +27,12 @@ export default defineComponent({
     {
       const states = reactive({account: {username:"", password:"" }})
 
-      return {states};
+      const onClickClear = ()=>{
+          states.account = {username:"", password:"" }
+      }
+
+
+      return {states, onClickClear};
     }
   },
 });
