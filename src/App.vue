@@ -8,24 +8,32 @@
     <hr />
     <span>#Account: {{ states.account }}</span> <br />
     <button @click="onClickClearAccount">Clear</button>
+    <hr>
+    <LoginForm/>
+    <login-form/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, reactive, onMounted } from "vue";
+import LoginForm from "@/components/LoginForm.vue";
 
-const defaultAccount = {username: "", password:""}
+const defaultAccount = { username: "", password: "" };
 
-export default defineComponent({    
+export default defineComponent({
+  components: {
+    LoginForm,
+  },
   setup() {
     let count1 = 1;
     const count2 = ref<number>(2);
     const states = reactive({
-      account: { username: "admin", password: "1234" },      
+      account: { username: "admin", password: "1234" },
     });
 
+    // https://v3.vuejs.org/guide/composition-api-lifecycle-hooks.html
     onMounted(() => {
-        setInterval(onClickAdd2, 1000)
+      setInterval(onClickAdd2, 1000);
     });
 
     const onClickAdd1 = () => {
@@ -41,7 +49,7 @@ export default defineComponent({
     const onClickClearAccount = () => {
       // account.username = ""
       // account.password = ""
-      states.account = defaultAccount
+      states.account = defaultAccount;
     };
 
     return {
