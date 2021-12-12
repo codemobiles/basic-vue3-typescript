@@ -33,7 +33,7 @@ export default defineComponent({
       }
 
       const onClickLogin = ()=>{
-        emit("submitLogin")
+        emit("submitLogin", states.account)
       }
 
 

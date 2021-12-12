@@ -52,8 +52,8 @@ export default defineComponent({
       states.account = defaultAccount;
     };
 
-    const onSubmitLogin  = ()=>{
-      alert("1234")
+    const onSubmitLogin  = (event:any)=>{
+      alert(JSON.stringify(event))      
     }
 
     return {
