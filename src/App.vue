@@ -10,7 +10,7 @@
     <button @click="onClickClearAccount">Clear</button>
     <hr>
     <!-- reorder ep10 -->
-    <LoginForm title="Login"/>    
+    <LoginForm title="Login" @submitLogin="onSubmitLogin"/>    
   </div>
 </template>
 
@@ -52,6 +52,10 @@ export default defineComponent({
       states.account = defaultAccount;
     };
 
+    const onSubmitLogin  = ()=>{
+      alert("1234")
+    }
+
     return {
       count1,
       count2,
@@ -59,6 +63,7 @@ export default defineComponent({
       onClickAdd2,
       states,
       onClickClearAccount,
+      onSubmitLogin
     };
   },
 });

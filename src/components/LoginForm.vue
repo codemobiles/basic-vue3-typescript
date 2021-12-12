@@ -11,7 +11,7 @@
       <input type="text" name="password" id="password" v-model="states.account.password"/>
       <br />
       <!-- buttons -->
-      <button type="button">Submit</button>
+      <button type="button" @click="onClickLogin">Submit</button>
       <button type="button" @click="onClickClear">Clear</button>
       <br>
       <span>#Debug: {{states.account}}</span>
@@ -22,8 +22,9 @@
 import { defineComponent, onMounted, reactive } from "vue";
 
 export default defineComponent({
+  emits: ["submitLogin"],
   props: ["title"],
-  setup(props) {
+  setup(props, {emit}) {
     {
       const states = reactive({account: {username:"", password:"" }})
 
@@ -31,8 +32,12 @@ export default defineComponent({
           states.account = {username:"", password:"" }
       }
 
+      const onClickLogin = ()=>{
+        emit("submitLogin")
+      }
 
-      return {states, onClickClear};
+
+      return {states, onClickClear, onClickLogin};
     }
   },
 });
