@@ -20,13 +20,18 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from "vue";
+import User from "@/types/user.type"
+
+interface LoginState{
+  account: User;
+}
 
 export default defineComponent({
   emits: ["submitLogin"],
   props: ["title"],
   setup(props, {emit}) {
     {
-      const states = reactive({account: {username:"", password:"" }})
+      const states = reactive<LoginState>({account: {username:"", password:"" }})
 
       const onClickClear = ()=>{
           states.account = {username:"", password:"" }

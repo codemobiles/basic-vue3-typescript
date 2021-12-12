@@ -17,6 +17,7 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, onMounted } from "vue";
 import LoginForm from "@/components/LoginForm.vue";
+import User from "./types/user.type";
 
 const defaultAccount = { username: "", password: "" };
 
@@ -52,8 +53,8 @@ export default defineComponent({
       states.account = defaultAccount;
     };
 
-    const onSubmitLogin  = (event:any)=>{
-      alert(JSON.stringify(event))      
+    const onSubmitLogin  = (user:User)=>{      
+      alert(JSON.stringify(user))      
     }
 
     return {
