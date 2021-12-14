@@ -11,12 +11,16 @@
     <hr>
     <!-- reorder ep10 -->
     <LoginForm title="Login" @submitLogin="onSubmitLogin"/>    
+    <hr>
+    <span @click="onClickClearMessage">#Debug: {{message}}</span>
+    <CustomVModel v-model:message="message"/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, reactive, onMounted } from "vue";
 import LoginForm from "@/components/LoginForm.vue";
+import CustomVModel from "@/components/CustomVModel.vue"
 import User from "./types/user.type";
 
 const defaultAccount = { username: "", password: "" };
@@ -24,10 +28,12 @@ const defaultAccount = { username: "", password: "" };
 export default defineComponent({
   components: {
     LoginForm,
+    CustomVModel
   },
   setup() {
     let count1 = 1;
     const count2 = ref<number>(2);
+    const message = ref<string>("55555");
     const states = reactive({
       account: { username: "admin", password: "1234" },
     });
@@ -57,6 +63,10 @@ export default defineComponent({
       alert(JSON.stringify(user))      
     }
 
+    const onClickClearMessage = ()=>{
+      message.value = ""
+    }
+
     return {
       count1,
       count2,
@@ -64,7 +74,9 @@ export default defineComponent({
       onClickAdd2,
       states,
       onClickClearAccount,
-      onSubmitLogin
+      onSubmitLogin,
+      message,
+      onClickClearMessage
     };
   },
 });
